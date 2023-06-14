@@ -76,3 +76,9 @@ days_of_week = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]
 nums = (1, 2, 3, 4, 5)
 print(nums[-1]) # 5
 print(nums[-3]) # 3
+
+# Dictionary
+player = {
+    'name' : 'Kim',
+    'age' : 22,
+}
