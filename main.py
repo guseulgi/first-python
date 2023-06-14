@@ -24,3 +24,20 @@ def multiple(num1 = 0, num2 = 0):
     return num1 * num2
 def divide(num1 = 0, num2 = 1):
     return num1 / num2
+
+# 조건문
+password_correct = True
+if password_correct:
+    print('Correct')
+else:
+    print('Wrong')
+  
+winner = 10
+if winner > 10:
+    print('Winner is greater than 10')
+elif winner < 10:
+    print('Winner is less than 10')
+else:
+    print('Winner is 10')
+
+    
