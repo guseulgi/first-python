@@ -40,4 +40,13 @@ elif winner < 10:
 else:
     print('Winner is 10')
 
-    
+# and / or
+age = int(input('How old R U?'))
+print('Your Age is', age)
+if age < 18:
+    print('You cant drink')
+elif age >= 18 and age <= 35:
+    print('You drink beer')
+else:
+    print('Go ahead!')
+
