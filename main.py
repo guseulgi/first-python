@@ -1,3 +1,4 @@
+"""
 # 출력
 print('Hello world!')
 
@@ -14,6 +15,7 @@ def say_hello(name = 'anon') :
 
 say_hello()
 say_hello('Kim')
+"""
 
 # 계산기
 def plus(num1 = 0, num2 = 0):
@@ -25,6 +27,7 @@ def multiple(num1 = 0, num2 = 0):
 def divide(num1 = 0, num2 = 1):
     return num1 / num2
 
+"""
 # 조건문
 password_correct = True
 if password_correct:
@@ -64,3 +67,12 @@ while playing:
       print('Lower')
   elif user_choice < pc_choice:
       print('Higher')
+"""
+
+# List
+days_of_week = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]
+
+# Tuple -> 불변성
+nums = (1, 2, 3, 4, 5)
+print(nums[-1]) # 5
+print(nums[-3]) # 3
