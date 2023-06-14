@@ -68,7 +68,7 @@ while playing:
   elif user_choice < pc_choice:
       print('Higher')
 """
-
+"""
 # List
 days_of_week = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]
 
@@ -82,3 +82,29 @@ player = {
     'name' : 'Kim',
     'age' : 22,
 }
+"""
+
+# 웹 사이트의 유효성 검사 예제
+from requests import get
+websites = (
+    "google.com",
+    "airbnb.com",
+    "https://twitter.com",
+    "facebook.com",
+)
+
+results = {
+   
+}
+
+for web in websites:
+  if not web.startswith('https://'):
+    print('Fix')
+    web = f"https://{web}"
+  res = get(web)
+  if res.status_code == 200:
+     results[web] = 'OK'
+  else:
+     results[web] = 'Failed'
+     
+print(results)
