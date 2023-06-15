@@ -93,9 +93,7 @@ websites = (
     "facebook.com",
 )
 
-results = {
-   
-}
+results = {}
 
 for web in websites:
   if not web.startswith('https://'):
@@ -106,5 +104,5 @@ for web in websites:
      results[web] = 'OK'
   else:
      results[web] = 'Failed'
-     
+
 print(results)
