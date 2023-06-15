@@ -58,9 +58,6 @@ def extract_indeed_jobs(keyword):
                     'position': title,
                 }
                 results.append(job_data)
-        for result in results:
-            print(result)
-            print('/////\n/////')
         return results
 
 
