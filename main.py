@@ -115,12 +115,14 @@ player = {
 # print(results)
 
 # Flask 사용
-from flask import render_template
+
+from flask import render_template # html 을 읽어오기 위한 함수
 from flask import Flask
 from flask import request
 from extractors.indeed_teaching import extract_indeed_jobs
 from extractors.wwr import extract_wwr_jobs
 app = Flask(__name__)
+# 오류 방지용 __name__ 사용
 
 
 @app.route('/')
@@ -130,11 +132,12 @@ def home():
 
 @app.route('/search')
 def search():
-    keyword = request.args.get('keyword')
+    keyword = request.args.get('keyword')  # request.args 로 쿼리스트링을 읽어올 수 있음
     indeed = extract_indeed_jobs(keyword)
     wwr = extract_wwr_jobs(keyword)
-    jobs = indeed + wwr
+    jobs = indeed + wwr  # list 는 +로 합치는 것이 가능
     return render_template('search.html', keyword=keyword, jobs=jobs)
+    # render_template() 함수의 파라미터에 넘겨줄 값을 넣어줘서 활용 가능
 
 
-app.run(debug=True)
+app.run(debug=True)  # debug = True 면 수정할 때마다 새로고침 됨

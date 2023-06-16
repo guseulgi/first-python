@@ -9,8 +9,10 @@
 <body>
   <h1>Job Scrapper</h1>
   <h4>What job do yo want?</h4>
-  <form action="/search" method="get">
+  <form action="/search" method="get"> 
+  <!--form 태그는 기본적으로 get 으로 설정되어 있음, action은 form 태그가 입력 되고 전송된 이후로 이동하기 위한 상대주소-->
     <input type="text" name="keyword" placeholder="Write one keyword plz!" />
+    <!-- name 속성에 들은 값이 쿼리스트링의 키값이 된다. value 값이 해당 키의 값 -->
     <button>Search</button>
   </form>
 </body>

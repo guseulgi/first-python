@@ -7,3 +7,4 @@ def save_to_file(keyword, jobs):
             f'{job["position"]},{job["company"]},{job["location"]},{job["link"]}\n')
 
     file.close()
+# 파일 순서 : open -> write -> close
