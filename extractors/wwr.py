@@ -22,14 +22,13 @@ def extract_wwr_jobs(search_term):
                 anchors = post.find_all('a')
                 anchor = anchors[1]
                 link = anchor['href']
-                company, kind, region = anchor.find_all(
+                company, kind, location = anchor.find_all(
                     'span', class_='company')
                 title = anchor.find('span', class_='title')
                 job_data = {
-                    'position': title.string,
-                    'company': company.string,
-                    'kind': kind.string,
-                    'location': region.string,
+                    'position': title.string.replace(',', ' '),
+                    'company': company.string.replace(',', ' '),
+                    'location': location.string.replace(',', ' '),
                     'link': f"http://weworkremotely.com{link}",
                 }
                 results.append(job_data)
