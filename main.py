@@ -18,24 +18,20 @@ say_hello('Kim')
 """
 
 # 계산기
-from flask import render_template
-from flask import Flask
+# def plus(num1=0, num2=0):
+#     return num1 + num2
 
 
-def plus(num1=0, num2=0):
-    return num1 + num2
+# def minus(num1=0, num2=0):
+#     return num1 - num2
 
 
-def minus(num1=0, num2=0):
-    return num1 - num2
+# def multiple(num1=0, num2=0):
+#     return num1 * num2
 
 
-def multiple(num1=0, num2=0):
-    return num1 * num2
-
-
-def divide(num1=0, num2=1):
-    return num1 / num2
+# def divide(num1=0, num2=1):
+#     return num1 / num2
 
 
 """
@@ -119,18 +115,26 @@ player = {
 # print(results)
 
 # Flask 사용
-
+from flask import render_template
+from flask import Flask
+from flask import request
+from extractors.indeed_teaching import extract_indeed_jobs
+from extractors.wwr import extract_wwr_jobs
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
-    return render_template('home.html', name='nico')
+    return render_template('home.html')
 
 
 @app.route('/search')
 def search():
-    return render_template('search.html')
+    keyword = request.args.get('keyword')
+    indeed = extract_indeed_jobs(keyword)
+    wwr = extract_wwr_jobs(keyword)
+    jobs = indeed + wwr
+    return render_template('search.html', keyword=keyword, jobs=jobs)
 
 
 app.run(debug=True)
