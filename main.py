@@ -18,14 +18,25 @@ say_hello('Kim')
 """
 
 # 계산기
-def plus(num1 = 0, num2 = 0):
+from flask import render_template
+from flask import Flask
+
+
+def plus(num1=0, num2=0):
     return num1 + num2
-def minus(num1 = 0, num2 = 0):
+
+
+def minus(num1=0, num2=0):
     return num1 - num2
-def multiple(num1 = 0, num2 = 0):
+
+
+def multiple(num1=0, num2=0):
     return num1 * num2
-def divide(num1 = 0, num2 = 1):
+
+
+def divide(num1=0, num2=1):
     return num1 / num2
+
 
 """
 # 조건문
@@ -85,24 +96,41 @@ player = {
 """
 
 # 웹 사이트의 유효성 검사 예제
-from requests import get
-websites = (
-    "google.com",
-    "airbnb.com",
-    "https://twitter.com",
-    "facebook.com",
-)
+# from requests import get
+# websites = (
+#     "google.com",
+#     "airbnb.com",
+#     "https://twitter.com",
+#     "facebook.com",
+# )
 
-results = {}
+# results = {}
 
-for web in websites:
-  if not web.startswith('https://'):
-    print('Fix')
-    web = f"https://{web}"
-  res = get(web)
-  if res.status_code == 200:
-     results[web] = 'OK'
-  else:
-     results[web] = 'Failed'
+# for web in websites:
+#   if not web.startswith('https://'):
+#     print('Fix')
+#     web = f"https://{web}"
+#   res = get(web)
+#   if res.status_code == 200:
+#      results[web] = 'OK'
+#   else:
+#      results[web] = 'Failed'
 
-print(results)
+# print(results)
+
+# Flask 사용
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def home():
+    return render_template('home.html', name='nico')
+
+
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
+
+app.run(debug=True)
