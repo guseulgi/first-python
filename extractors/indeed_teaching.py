@@ -9,10 +9,12 @@ onepage_list_count = 10
 
 
 def get_page_count(keyword):
-    options = Options()
-    options.add_experimental_option('detach', True)  # 브라우저 꺼짐 방지
-    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()),
-                               options=options)
+    # options = Options()
+    # options.add_experimental_option('detach', True)  # 브라우저 꺼짐 방지
+    # browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()),
+    #                            options=options)
+    browser = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()))
     base_url = f'https://kr.indeed.com/jobs?q={keyword}'
     browser.get(base_url)
 
@@ -61,4 +63,4 @@ def extract_indeed_jobs(keyword):
         return results
 
 
-extract_indeed_jobs('python')
+# extract_indeed_jobs('python')
