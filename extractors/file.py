@@ -1,6 +1,6 @@
 def save_to_file(keyword, jobs):
-    file = open(f"{keyword}.csv", 'w')
-    file.write('Position,Company,Location,URL\n')
+    file = open(f"first-python/{keyword}.csv", 'w', encoding='utf-8')
+    file.write('\ufeffPosition,Company,Location,URL\n')  # 문자열이 깨질 때 \ufeff 추가
 
     for job in jobs:
         file.write(

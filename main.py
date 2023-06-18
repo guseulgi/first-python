@@ -115,9 +115,9 @@ player = {
 # print(results)
 
 # Flask 사용
-
+from extractors.file import save_to_file
 from flask import render_template # html 을 읽어오기 위한 함수
-from flask import Flask, redirect
+from flask import Flask, redirect, send_file
 from flask import request
 from extractors.indeed_teaching import extract_indeed_jobs
 from extractors.wwr import extract_wwr_jobs
@@ -144,8 +144,23 @@ def search():
         # indeed = extract_indeed_jobs(keyword)
         wwr = extract_wwr_jobs(keyword)
         jobs = wwr  # + indeed  # list 는 +로 합치는 것이 가능
+        db[keyword] = jobs
     return render_template('search.html', keyword=keyword, jobs=jobs)
     # render_template() 함수의 파라미터에 넘겨줄 값을 넣어줘서 활용 가능
+
+
+@app.route('/export')
+def export():
+    keyword = request.args.get('keyword')
+    if keyword == None:
+        return redirect('/')
+    if keyword == "":
+        return redirect('/')
+    if keyword not in db:
+        return redirect(f'/search?keyword={keyword}')
+
+    save_to_file(keyword, db[keyword])
+    return send_file(f"{keyword}.csv", as_attachment=True)
 
 
 app.run("127.0.0.1", port=8000, debug=True)  # debug = True 면 수정할 때마다 새로고침 됨
